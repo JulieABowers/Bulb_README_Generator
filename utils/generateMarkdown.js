@@ -67,7 +67,7 @@ function RenderLicense(license)
   return licenseData;
 }
 
-function generateMarkdown(data) {
+function GenerateMarkdown(data) {
   /*Put all the data together in the format is should be rendered in.
   
     Title
@@ -114,19 +114,20 @@ function generateMarkdown(data) {
       -Email: [email address]
 
   */
-      let markdownText = `# ${data.title}\n\n`
-      // license badge goes here
-      markdownText += `## Description\n\n${data.description}\n\n`;
-      markdownText += `${GenerateTableOfContents(data.table_of_contents)}`;
-      markdownText += `## Installation\n\n${data.installation}\n\n`;
-      markdownText += `## Usage\n\n${data.usage}\n\n`;
-      // license section goes here
-      // license link go here
-      markdownText += `## Contributing\n\n${data.contributing}\n\n`;
-      markdownText += `## Tests\n\n${data.tests}\n\n`;
-      markdownText += `## Questions\n\nIf you have any questions, contact the developer at:\n\n`;
-      markdownText += `- GitHub: [${data.github}](https://github.com/${data.github})\n\n- Email: ${data.email}`;
-      return markdownText;
+
+  let licenseData = RenderLicense(data.license);
+  let markdownText = `# ${data.title}\n\n`
+  markdownText += `${licenseData.badge}\n\n`;
+  markdownText += `## Description\n\n${data.description}\n\n`;
+  markdownText += `${GenerateTableOfContents(data.table_of_contents)}`;
+  markdownText += `## Installation\n\n${data.installation}\n\n`;
+  markdownText += `## Usage\n\n${data.usage}\n\n`;
+  markdownText += `## License\n\n${licenseData.link}\n\n`;
+  markdownText += `## Contributing\n\n${data.contributing}\n\n`;
+  markdownText += `## Tests\n\n${data.tests}\n\n`;
+  markdownText += `## Questions\n\nIf you have any questions, contact the developer at:\n\n`;
+  markdownText += `- GitHub: [${data.github}](https://github.com/${data.github})\n\n- Email: ${data.email}`;
+  return markdownText;
 }
 
 module.exports = GenerateMarkdown;
