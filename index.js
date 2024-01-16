@@ -67,20 +67,25 @@ const questions = [
 ];
 
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
+function WriteToFile(fileName, data) {
   // Write the file to the specified location with the specified name.
   // Here fs-extra (fse) will create the output folder if it does not exist.
-  // If there is an error log it to the console, otherwise, give console message 
-  // that the file has been created.
+  fse.outputFile(fileName, data, err => {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log('README.md file has been generated to the output folder!');
+    }
+  })
 }
 
-// TODO: Create a function to initialize app
 function init() {
   // Kick off the program by prompting users with questions.
   inquirer.prompt(questions).then((answers) => {
     // Use the provided answers to create the contents of the file.
-    // Call function to actually write the file. Pass in path, file name, and text contents.
+    const markdown = generateMarkdown(answers);
+    //  Call function to actually write the file. Pass in path, file name, and text contents.
+    WriteToFile('./output/README.md', markdown);
   });
 }
 

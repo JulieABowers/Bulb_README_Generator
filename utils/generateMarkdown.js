@@ -19,37 +19,54 @@ function GenerateTableOfContents(confirm)
   return message;
 }
 
-// TODO: Create a function that returns a license badge based on which license is passed in
-function renderLicenseBadge(license) {
-  /* Badge links
-    
-    Apache 2.0: https://img.shields.io/badge/License-Apache%202.0-blue.svg
-    GNU GPL 3.0: https://img.shields.io/badge/License-GPLv3-blue.svg
-    ICS: No link found
-    MIT: https://img.shields.io/badge/License-MIT-yellow.svg
+function RenderLicense(license)
+{
+  // Return a license badge and link to license text based on which license is passed in.
+  // If there is no license, return an empty string.
+  let licenseData = {};
 
-    If there is no license, return an empty string
-  */
+  switch(license)
+  {
+    case 'Apache 2.0': {
+      licenseData = {
+        "badge": "[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)]",
+        "link": "This project is licensed under the [Apache License 2.0](https://opensource.org/licenses/Apache-2.0)."
+        }
+      break;
+    } 
+    case 'GNU GPL 3.0': {
+      licenseData = {
+        "badge": "[![License: GNU GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]",
+        "link": "This project is licensed under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0)."
+        }
+      break;
+    }
+    case 'ICS': {
+      licenseData = {
+        "badge": "[![License: ICS]()",
+        "link": "This project is licensed under the [ISC License](https://choosealicense.com/licenses/isc/)."
+        }
+      break;
+    } 
+    case 'MIT': {
+      licenseData = {
+        "badge": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]",
+        "link": "This project is licensed under the [MIT License](https://opensource.org/licenses/MIT)."
+        }        
+      break;
+    }
+    default: {
+      licenseData = {
+        "badge": "",
+        "link": ""
+        }
+      break;
+    }
+  } 
+
+  return licenseData;
 }
 
-// TODO: Create a function that returns the license link
-function renderLicenseLink(license) {
-  /* License links
-    
-    Apache 2.0: https://opensource.org/licenses/Apache-2.0
-    GNU GPL 3.0: https://www.gnu.org/licenses/gpl-3.0
-    ICS: https://choosealicense.com/licenses/isc/
-    MIT: https://opensource.org/licenses/MIT
-
-    If there is no license, return an empty string
-  */
-}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
-
-// TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   /*Put all the data together in the format is should be rendered in.
   
