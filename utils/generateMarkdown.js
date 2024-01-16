@@ -1,3 +1,24 @@
+function GenerateTableOfContents(confirm)
+{
+  // The table of contents is optional. If the user confirms they wish to use the
+  // table of contents, build it, otherwise, return a empty string. Multiple lines
+  // used for ease of reading.
+  let message = '';
+  if (confirm)  
+  {
+    message = `## Table of Contents`;
+    message += `\n\n- [Installation](#installation)`;
+    message += `\n- [Usage](#usage)`;
+    message += `\n- [License](#license)`;
+    message += `\n- [Contributing](#contributing)`;
+    message += `\n- [Tests](#tests)`;
+    message += `\n- [Questions](#questions)`;
+    message += `\n`;
+  }
+  
+  return message;
+}
+
 // TODO: Create a function that returns a license badge based on which license is passed in
 function renderLicenseBadge(license) {
   /* Badge links
@@ -76,9 +97,19 @@ function generateMarkdown(data) {
       -Email: [email address]
 
   */
-  return `# ${data.title}
-
-`;
+      let markdownText = `# ${data.title}\n\n`
+      // license badge goes here
+      markdownText += `## Description\n\n${data.description}\n\n`;
+      markdownText += `${GenerateTableOfContents(data.table_of_contents)}`;
+      markdownText += `## Installation\n\n${data.installation}\n\n`;
+      markdownText += `## Usage\n\n${data.usage}\n\n`;
+      // license section goes here
+      // license link go here
+      markdownText += `## Contributing\n\n${data.contributing}\n\n`;
+      markdownText += `## Tests\n\n${data.tests}\n\n`;
+      markdownText += `## Questions\n\nIf you have any questions, contact the developer at:\n\n`;
+      markdownText += `- GitHub: [${data.github}](https://github.com/${data.github})\n\n- Email: ${data.email}`;
+      return markdownText;
 }
 
 module.exports = GenerateMarkdown;
