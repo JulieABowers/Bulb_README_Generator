@@ -1,12 +1,13 @@
 {
-  "name": "static-site",
+  "name": "Bulb README Generator",
   "version": "1.0.0",
-  "description": "",
+  "description": "App to auto generate a README file",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
-  "author": "",
+  "author": "Julie A Bowers",
   "license": "ISC",
   "dependencies": {
     "fs-extra": "^11.2.0",

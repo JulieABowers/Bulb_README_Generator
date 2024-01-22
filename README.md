@@ -80,3 +80,9 @@ If you have any questions, contact the developer at:
 - GitHub: [JulieABowers](https://github.com/JulieABowers)
 
 - Email: haldirolorien@comcast.net
+
+## Solution URL:
+[Repository Link:](https://github.com/JulieABowers/Bulb_README_Generator)
+
+## Walkthrough Video:
+[Click Here to Watch](https://drive.google.com/file/d/1hHlTr5rRlBmiB2-3H0kVLbQyd41X31JI/view)
